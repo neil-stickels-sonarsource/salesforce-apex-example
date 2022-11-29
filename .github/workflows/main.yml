@@ -35,4 +35,3 @@ jobs:
             -Dsonar.projectKey=SonarSource-Demos_salesforce-apex-example
             -Dsonar.verbose=true
             -Dsonar.apex.pmd.reportPaths=pmd.xml
-            
