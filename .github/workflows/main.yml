@@ -22,7 +22,7 @@ jobs:
         env:
           PMD_JAVA_OPTS: -Xmx2g
       - name: updatePmd
-        run: awk '{gsub("salesforce-apex-example/", "");print}' $GITHUB_WORKSPACE/pmd.xml > $GITHUB_WORKSPACE/pmdnew.xml
+        run: awk '{gsub("/home/.*salesforce-apex-example/", "/github/workspace/");print}' $GITHUB_WORKSPACE/pmd.xml > $GITHUB_WORKSPACE/pmdnew.xml
       - name: check-pmd-new
         run: cat $GITHUB_WORKSPACE/pmdnew.xml
       - uses: sonarsource/sonarqube-scan-action@master
