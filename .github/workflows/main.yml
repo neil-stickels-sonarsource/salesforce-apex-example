@@ -21,10 +21,10 @@ jobs:
         run: pmd -d $GITHUB_WORKSPACE/src -R $GITHUB_WORKSPACE/pmd-quick.xml --force-language apex -f xml --fail-on-violation false -r $GITHUB_WORKSPACE/pmd.xml
         env:
           PMD_JAVA_OPTS: -Xmx2g
-      - name: check-pmd
-        run: cat $GITHUB_WORKSPACE/pmd.xml
-      - name: check-pwd
-        run: pwd
+      - name: updatePmd
+        run: awk '{gsub("Milestones-PM/", "");print}' $GITHUB_WORKSPACE/pmd.xml > $GITHUB_WORKSPACE/pmdnew.xml
+      - name: check-pmd-new
+        run: cat $GITHUB_WORKSPACE/pmdnew.xml
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -34,5 +34,5 @@ jobs:
             -Dsonar.projectName=Salesforce-Apex-Example
             -Dsonar.projectKey=SonarSource-Demos_salesforce-apex-example
             -Dsonar.verbose=true
-            -Dsonar.apex.pmd.reportPaths=$GITHUB_WORKSPACE/pmd.xml
+            -Dsonar.apex.pmd.reportPaths=pmd.xml
             
