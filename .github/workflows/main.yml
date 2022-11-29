@@ -18,7 +18,7 @@ jobs:
         with:
           pmd-version: '6.52.0'
       - name: run-pmd
-        run: pmd -d $GITHUB_WORKSPACE -R $GITHUB_WORKSPACE/pmd-quick.xml --force-language apex -failOnVioltation false -f xml > $GITHUB_WORKSPACE/pmd.xml
+        run: pmd -d $GITHUB_WORKSPACE -R $GITHUB_WORKSPACE/pmd-quick.xml --force-language apex --fail-on-violation false false -f xml > $GITHUB_WORKSPACE/pmd.xml
         env:
           PMD_JAVA_OPTS: -Xmx2g
       - uses: sonarsource/sonarqube-scan-action@master
