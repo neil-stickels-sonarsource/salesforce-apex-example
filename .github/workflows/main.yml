@@ -23,6 +23,8 @@ jobs:
           PMD_JAVA_OPTS: -Xmx2g
       - name: check-pmd
         run: cat $GITHUB_WORKSPACE/pmd.xml
+      - name: check-pwd
+        run: pwd
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
