@@ -18,7 +18,7 @@ jobs:
         with:
           pmd-version: '6.52.0'
       - name: run-pmd
-        run: pmd -d $GITHUB_WORKSPACE -R $GITHUB_WORKSPACE/pmd-quick.xml --force-language apex --fail-on-violation false --verbose -f xml > $GITHUB_WORKSPACE/pmd.xml
+        run: pmd -d $GITHUB_WORKSPACE -R $GITHUB_WORKSPACE/pmd-quick.xml --force-language apex --fail-on-violation false --verbose -f xml -r $GITHUB_WORKSPACE/pmd.xml
         env:
           PMD_JAVA_OPTS: -Xmx2g
       - name: check-pmd
