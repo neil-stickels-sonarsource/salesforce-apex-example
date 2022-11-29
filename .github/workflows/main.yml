@@ -19,6 +19,8 @@ jobs:
           pmd-version: '6.52.0'
       - name: run-pmd
         run: pmd -d $GITHUB_WORKSPACE -R $GITHUB_WORKSPACE/pmd-quick.xml --force-language apex -f xml > $GITHUB_WORKSPACE/pmd.xml
+        env:
+          PMD_JAVA_OPTS: '-Xmx2g'
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
