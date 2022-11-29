@@ -20,7 +20,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
-            -Dsonar.projectName="Salesforce Apex Example"
+            -Dsonar.projectName=Salesforce-Apex-Example
             -Dsonar.projectKey=SonarSource-Demos_salesforce-apex-example
             -Dsonar.verbose=true
             -Dsonar.apex.pmd.reportPaths=pmd.xml
