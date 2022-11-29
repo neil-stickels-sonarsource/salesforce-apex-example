@@ -1,0 +1,26 @@
+name: Build
+on:
+  push:
+    branches:
+      - main # or the name of your main branch
+      - release**
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  sonarqube:
+    name: SonarQubeAnalysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectName="Salesforce Apex Example"
+            -Dsonar.projectKey=SonarSource-Demos_salesforce-apex-example
+            -Dsonar.verbose=true
+            -Dsonar.apex.pmd.reportPaths=pmd.xml
