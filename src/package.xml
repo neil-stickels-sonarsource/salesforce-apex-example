@@ -80,7 +80,7 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>MIlestone1_Calendar_Full</members>
+        <members>Milestone1_Calendar_Full</members>
         <members>Milestone1_Charts_GanttComponent</members>
         <members>Milestone1_PopupComponent</members>
         <name>ApexComponent</name>
